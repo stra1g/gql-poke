@@ -4,6 +4,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { HelloModule } from './modules/hello/hello.module';
+import { PrismaModule } from './modules/prisma/prisma.module';
+import { PokemonModule } from './modules/pokemon/pokemon.module';
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { HelloModule } from './modules/hello/hello.module';
       },
     }),
     HelloModule,
+    PrismaModule,
+    PokemonModule,
   ],
   controllers: [],
   providers: [],
