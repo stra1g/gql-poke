@@ -2,7 +2,11 @@
 /dist
 /node_modules
 
+# Lock
+yarn.lock
+package-lock.json
 
+graphql.ts
 
 # IDE - VSCode
 .vscode/*
