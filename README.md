@@ -14,6 +14,14 @@ or
 $ yarn start:dev
 ```
 
+## (Optional) generate prisma files
+
+```bash
+$ npm run prisma generate
+or
+$ yarn prisma generate
+```
+
 ## Test
 
 ```bash
