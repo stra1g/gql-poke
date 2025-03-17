@@ -1,3 +1,5 @@
+# Candidate Interview Project
+
 ## Installation
 
 ```bash
