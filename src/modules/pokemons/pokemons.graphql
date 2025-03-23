@@ -1,7 +1,17 @@
+type Type {
+  name: String!
+  created_at: String!
+}
+
+type PokemonType {
+  type_id: Int!
+  type: Type!
+}
+
 type Pokemon {
   id: Int!
   name: String!
-  type: String!
+  types: [PokemonType!]!
   created_at: String!
 }
 
@@ -46,12 +56,12 @@ type Query {
 
 input CreatePokemonInput {
   name: String!
-  type: String!
+  types: [String!]!
 }
 
 input UpdatePokemonInput {
   name: String
-  type: String
+  types: [String!]
 }
 
 type Mutation {
