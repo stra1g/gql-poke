@@ -4,6 +4,7 @@ import {
   CreatePokemonInput,
   UpdatePokemonInput,
 } from 'src/modules/pokemons/pokemons.input';
+import { PokeApiService } from 'src/modules/pokemons/services/pokeapi.service';
 import { TypesService } from 'src/modules/pokemons/services/types.service';
 import { PrismaService } from 'src/modules/prisma/prisma.service';
 
@@ -33,6 +34,7 @@ export class PokemonsService {
   constructor(
     private prisma: PrismaService,
     private typesService: TypesService,
+    private pokeApiService: PokeApiService,
   ) {}
 
   async list(listParams?: ListParams) {
@@ -123,5 +125,51 @@ export class PokemonsService {
 
   async deleteById(id: number) {
     return this.prisma.pokemon.delete({ where: { id } });
+  }
+
+  async updateOrCreate(id: number, { name, types }: CreatePokemonInput) {
+    const fetchedTypes = await this.typesService.findOrCreateMany(types);
+
+    return this.prisma.pokemon.upsert({
+      where: { id },
+      update: {
+        name,
+        types: {
+          deleteMany: {},
+          create: fetchedTypes.map((type) => ({
+            type: {
+              connect: { id: type.id },
+            },
+          })),
+        },
+      },
+      create: {
+        id,
+        name,
+        types: {
+          create: fetchedTypes.map((type) => ({
+            type: {
+              connect: { id: type.id },
+            },
+          })),
+        },
+      },
+      include: {
+        types: {
+          include: {
+            type: true,
+          },
+        },
+      },
+    });
+  }
+
+  async importPokemonById(id: number) {
+    const pokemon = await this.pokeApiService.getPokemonById(id);
+
+    return this.updateOrCreate(pokemon.id, {
+      name: pokemon.name,
+      types: pokemon.types.map((type) => type.type.name),
+    });
   }
 }

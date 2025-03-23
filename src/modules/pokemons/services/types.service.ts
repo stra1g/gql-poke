@@ -10,11 +10,11 @@ export class TypesService {
       types.map((type) =>
         this.prisma.types.upsert({
           where: {
-            name: type,
+            name: type.toLowerCase(),
           },
           update: {},
           create: {
-            name: type,
+            name: type.toLowerCase(),
           },
         }),
       ),

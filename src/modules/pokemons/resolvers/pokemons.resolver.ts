@@ -63,4 +63,9 @@ export class PokemonsResolver {
     await this.pokemonsService.deleteById(+id);
     return true;
   }
+
+  @Mutation()
+  async importPokemonById(@Args('id') id: string) {
+    return this.pokemonsService.importPokemonById(+id);
+  }
 }
