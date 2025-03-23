@@ -22,8 +22,17 @@ input SortingParams {
   direction: SortDirection!
 }
 
+input PaginationParams {
+  page: Int!
+  perPage: Int!
+}
+
 type Query {
   findManyPokemon(sortingParams: SortingParams): [Pokemon!]!
+  paginatePokemon(
+    paginationParams: PaginationParams
+    sortingParams: SortingParams
+  ): [Pokemon!]!
 }
 
 input CreatePokemonInput {

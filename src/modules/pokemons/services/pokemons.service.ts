@@ -1,23 +1,32 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
+import { PokemonFields } from 'src/graphql';
 import { PrismaService } from 'src/modules/prisma/prisma.service';
 
 type SortingParams = {
-  field: string;
+  field: PokemonFields;
   direction: 'asc' | 'desc';
+};
+
+type PaginationParams = {
+  skip: number;
+  take: number;
 };
 
 type ListParams = {
   sortingParams?: SortingParams;
+  paginationParams?: PaginationParams;
 };
 
 @Injectable()
 export class PokemonsService {
   constructor(private prisma: PrismaService) {}
 
-  async findAll(listParams?: ListParams) {
-    const { sortingParams } = listParams || {};
+  async list(listParams?: ListParams) {
+    const { sortingParams, paginationParams } = listParams || {};
     return this.prisma.pokemon.findMany({
+      take: paginationParams?.take,
+      skip: paginationParams?.skip,
       orderBy: {
         [sortingParams?.field || 'id']: sortingParams?.direction || 'asc',
       },

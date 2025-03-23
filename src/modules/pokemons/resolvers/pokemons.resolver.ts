@@ -3,6 +3,7 @@ import {
   SortingParams,
   CreatePokemonInput,
   UpdatePokemonInput,
+  PaginationParams,
 } from 'src/graphql';
 import { PokemonsService } from 'src/modules/pokemons/services/pokemons.service';
 
@@ -15,7 +16,23 @@ export class PokemonsResolver {
     @Args('sortingParams', { nullable: true })
     sortingParams?: SortingParams,
   ) {
-    return this.pokemonsService.findAll({
+    return this.pokemonsService.list({
+      sortingParams,
+    });
+  }
+
+  @Query()
+  async paginatePokemon(
+    @Args('paginationParams')
+    paginationParams: PaginationParams,
+    @Args('sortingParams', { nullable: true })
+    sortingParams?: SortingParams,
+  ) {
+    return this.pokemonsService.list({
+      paginationParams: {
+        skip: paginationParams.perPage * (paginationParams.page - 1),
+        take: paginationParams.perPage,
+      },
       sortingParams,
     });
   }
