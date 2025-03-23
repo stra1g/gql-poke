@@ -13,4 +13,8 @@ export class PokemonsService {
   async create(data: Prisma.PokemonCreateInput) {
     return this.prisma.pokemon.create({ data });
   }
+
+  async updateById(id: number, data: Prisma.PokemonUpdateInput) {
+    return this.prisma.pokemon.update({ where: { id }, data });
+  }
 }

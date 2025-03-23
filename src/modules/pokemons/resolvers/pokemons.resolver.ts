@@ -1,5 +1,6 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CreatePokemonInput } from 'src/modules/pokemons/inputs/create-pokemon.input';
+import { UpdatePokemonInput } from 'src/modules/pokemons/inputs/update-pokemon.input';
 import { Pokemon } from 'src/modules/pokemons/models/pokemon.model';
 import { PokemonsService } from 'src/modules/pokemons/services/pokemons.service';
 
@@ -18,5 +19,13 @@ export class PokemonsResolver {
     payload: CreatePokemonInput,
   ): Promise<Pokemon> {
     return this.pokemonsService.create(payload);
+  }
+
+  @Mutation(() => Pokemon)
+  async updateOnePokemon(
+    @Args('id') id: string,
+    @Args('updatePokemonPayload') payload: UpdatePokemonInput,
+  ): Promise<Pokemon> {
+    return this.pokemonsService.updateById(+id, payload);
   }
 }

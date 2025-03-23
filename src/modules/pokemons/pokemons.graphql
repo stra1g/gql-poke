@@ -14,6 +14,12 @@ input CreatePokemonInput {
   type: String!
 }
 
+input UpdatePokemonInput {
+  name: String
+  type: String
+}
+
 type Mutation {
   createOnePokemon(createPokemonPayload: CreatePokemonInput): Pokemon!
+  updateOnePokemon(id: ID!, updatePokemonPayload: UpdatePokemonInput): Pokemon!
 }
