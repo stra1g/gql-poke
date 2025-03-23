@@ -1,31 +1,38 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreatePokemonInput } from 'src/modules/pokemons/inputs/create-pokemon.input';
-import { UpdatePokemonInput } from 'src/modules/pokemons/inputs/update-pokemon.input';
-import { Pokemon } from 'src/modules/pokemons/models/pokemon.model';
+import {
+  SortingParams,
+  CreatePokemonInput,
+  UpdatePokemonInput,
+} from 'src/graphql';
 import { PokemonsService } from 'src/modules/pokemons/services/pokemons.service';
 
-@Resolver(() => Pokemon)
+@Resolver('Pokemon')
 export class PokemonsResolver {
   constructor(private readonly pokemonsService: PokemonsService) {}
 
-  @Query(() => [Pokemon])
-  async findManyPokemon() {
-    return this.pokemonsService.findAll();
+  @Query()
+  async findManyPokemon(
+    @Args('sortingParams', { nullable: true })
+    sortingParams?: SortingParams,
+  ) {
+    return this.pokemonsService.findAll({
+      sortingParams,
+    });
   }
 
-  @Mutation(() => Pokemon)
+  @Mutation()
   async createOnePokemon(
     @Args('createPokemonPayload')
     payload: CreatePokemonInput,
-  ): Promise<Pokemon> {
+  ) {
     return this.pokemonsService.create(payload);
   }
 
-  @Mutation(() => Pokemon)
+  @Mutation()
   async updateOnePokemon(
     @Args('id') id: string,
     @Args('updatePokemonPayload') payload: UpdatePokemonInput,
-  ): Promise<Pokemon> {
+  ) {
     return this.pokemonsService.updateById(+id, payload);
   }
 

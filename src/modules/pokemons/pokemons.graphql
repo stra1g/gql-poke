@@ -1,12 +1,29 @@
 type Pokemon {
-  id: ID!
+  id: Int!
   name: String!
   type: String!
   created_at: String!
 }
 
+enum PokemonFields {
+  id
+  name
+  type
+  created_at
+}
+
+enum SortDirection {
+  asc
+  desc
+}
+
+input SortingParams {
+  field: PokemonFields!
+  direction: SortDirection!
+}
+
 type Query {
-  findManyPokemon: [Pokemon!]!
+  findManyPokemon(sortingParams: SortingParams): [Pokemon!]!
 }
 
 input CreatePokemonInput {
