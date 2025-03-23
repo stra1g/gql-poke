@@ -1,10 +1,9 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { SortingParams, PaginationParams, FilterParams } from 'src/graphql';
 import {
-  SortingParams,
   CreatePokemonInput,
   UpdatePokemonInput,
-  PaginationParams,
-} from 'src/graphql';
+} from 'src/modules/pokemons/pokemons.input';
 import { PokemonsService } from 'src/modules/pokemons/services/pokemons.service';
 
 @Resolver('Pokemon')
@@ -15,9 +14,12 @@ export class PokemonsResolver {
   async findManyPokemon(
     @Args('sortingParams', { nullable: true })
     sortingParams?: SortingParams,
+    @Args('filterParams', { nullable: true })
+    filterParams?: FilterParams,
   ) {
     return this.pokemonsService.list({
       sortingParams,
+      filterParams,
     });
   }
 
@@ -27,6 +29,8 @@ export class PokemonsResolver {
     paginationParams: PaginationParams,
     @Args('sortingParams', { nullable: true })
     sortingParams?: SortingParams,
+    @Args('filterParams', { nullable: true })
+    filterParams?: FilterParams,
   ) {
     return this.pokemonsService.list({
       paginationParams: {
@@ -34,6 +38,7 @@ export class PokemonsResolver {
         take: paginationParams.perPage,
       },
       sortingParams,
+      filterParams,
     });
   }
 

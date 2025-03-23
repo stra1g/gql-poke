@@ -13,9 +13,15 @@ type PaginationParams = {
   take: number;
 };
 
+type FilterParams = {
+  type?: string;
+  name?: string;
+};
+
 type ListParams = {
   sortingParams?: SortingParams;
   paginationParams?: PaginationParams;
+  filterParams?: FilterParams;
 };
 
 @Injectable()
@@ -23,8 +29,15 @@ export class PokemonsService {
   constructor(private prisma: PrismaService) {}
 
   async list(listParams?: ListParams) {
-    const { sortingParams, paginationParams } = listParams || {};
+    const { sortingParams, paginationParams, filterParams } = listParams || {};
+
     return this.prisma.pokemon.findMany({
+      where: {
+        name: {
+          contains: filterParams?.name,
+        },
+        type: filterParams?.type,
+      },
       take: paginationParams?.take,
       skip: paginationParams?.skip,
       orderBy: {

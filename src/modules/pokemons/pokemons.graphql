@@ -27,11 +27,20 @@ input PaginationParams {
   perPage: Int!
 }
 
+input FilterParams {
+  name: String
+  type: String
+}
+
 type Query {
-  findManyPokemon(sortingParams: SortingParams): [Pokemon!]!
+  findManyPokemon(
+    sortingParams: SortingParams
+    filterParams: FilterParams
+  ): [Pokemon!]!
   paginatePokemon(
     paginationParams: PaginationParams
     sortingParams: SortingParams
+    filterParams: FilterParams
   ): [Pokemon!]!
 }
 
