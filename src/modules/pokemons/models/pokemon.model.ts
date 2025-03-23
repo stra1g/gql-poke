@@ -12,5 +12,5 @@ export class Pokemon {
   type: string;
 
   @Field()
-  created_at: number;
+  created_at: Date;
 }

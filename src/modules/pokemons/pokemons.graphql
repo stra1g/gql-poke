@@ -8,3 +8,12 @@ type Pokemon {
 type Query {
   findManyPokemon: [Pokemon!]!
 }
+
+input CreatePokemonInput {
+  name: String!
+  type: String!
+}
+
+type Mutation {
+  createOnePokemon(createPokemonPayload: CreatePokemonInput): Pokemon!
+}
