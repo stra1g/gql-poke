@@ -17,4 +17,8 @@ export class PokemonsService {
   async updateById(id: number, data: Prisma.PokemonUpdateInput) {
     return this.prisma.pokemon.update({ where: { id }, data });
   }
+
+  async deleteById(id: number) {
+    return this.prisma.pokemon.delete({ where: { id } });
+  }
 }

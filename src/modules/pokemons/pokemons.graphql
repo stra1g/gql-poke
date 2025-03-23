@@ -22,4 +22,5 @@ input UpdatePokemonInput {
 type Mutation {
   createOnePokemon(createPokemonPayload: CreatePokemonInput): Pokemon!
   updateOnePokemon(id: ID!, updatePokemonPayload: UpdatePokemonInput): Pokemon!
+  deleteOnePokemon(id: ID!): Boolean!
 }

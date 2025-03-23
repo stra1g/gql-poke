@@ -28,4 +28,10 @@ export class PokemonsResolver {
   ): Promise<Pokemon> {
     return this.pokemonsService.updateById(+id, payload);
   }
+
+  @Mutation(() => Boolean)
+  async deleteOnePokemon(@Args('id') id: string): Promise<boolean> {
+    await this.pokemonsService.deleteById(+id);
+    return true;
+  }
 }
