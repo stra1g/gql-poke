@@ -1,0 +1,10 @@
+type Pokemon {
+  id: ID!
+  name: String!
+  type: String!
+  created_at: String!
+}
+
+type Query {
+  findManyPokemon: [Pokemon!]!
+}
