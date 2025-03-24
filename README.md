@@ -1,15 +1,24 @@
 # Pokemon GQL Server
 
 <div align="center">
-   <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-   <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" alt="NodeJS">
-   <img src="https://img.shields.io/badge/GraphQl-E10098?style=for-the-badge&logo=graphql&logoColor=white" alt="GraphQL">
-   <img src="https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white" alt="NestJS">
+  <img src="https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white" alt="NestJS">
+  <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" alt="NodeJS">
+  <img src="https://img.shields.io/badge/GraphQl-E10098?style=for-the-badge&logo=graphql&logoColor=white" alt="GraphQL">
+  <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
 </div>
 
-## Project Overview
+<table align="center">
+  <tr>
+    <td align="center" width="120"><img src="https://www.gifcen.com/wp-content/uploads/2024/05/pikachu-gif-5.gif" alt="Pikachu" width="120"></td>
+    <td>
+      <p>⚡️ This project is a GraphQL API designed to manage Pokémon and their respective types. It provides functionalities to list, create, update, delete, and import Pokémon, as well as filter, sort, and paginate results. The API is built using NestJS and GraphQL, with Prisma as the ORM for database management ⚡️.</p>
+    </td>
+  </tr>
+</table>
 
-This project is a GraphQL API designed to manage Pokémon and their respective types. It provides functionalities to list, create, update, delete, and import Pokémon, as well as filter, sort, and paginate results. The API is built using NestJS and GraphQL, with Prisma as the ORM for database management.
+<!-- ## Project Overview
+
+This project is a GraphQL API designed to manage Pokémon and their respective types. It provides functionalities to list, create, update, delete, and import Pokémon, as well as filter, sort, and paginate results. The API is built using NestJS and GraphQL, with Prisma as the ORM for database management. -->
 
 ### Usage of Prisma
 
@@ -138,7 +147,7 @@ set name = lower(name);
 - Add Redis as a Cache Storage:
   - Replace the in-memory cache with Redis for better scalability and performance.
 - Enhance Pagination Metadata:
-  - Add properties like total and has_next_page to the pagination response.
+  - Add properties like total_count and has_next_page to the pagination response.
 - Expand Pokémon Data:
   - Add more properties (e.g., abilities, stats) to the Pokémon model.
 - Improve Error Handling:
