@@ -11,14 +11,10 @@
   <tr>
     <td align="center" width="120"><img src="https://www.gifcen.com/wp-content/uploads/2024/05/pikachu-gif-5.gif" alt="Pikachu" width="120"></td>
     <td>
-      <p>⚡️ This project is a GraphQL API designed to manage Pokémon and their respective types. It provides functionalities to list, create, update, delete, and import Pokémon, as well as filter, sort, and paginate results. The API is built using NestJS and GraphQL, with Prisma as the ORM for database management ⚡️.</p>
+      <p>⚡️ This project is a GraphQL API designed to manage Pokémon and their respective types. It provides functionalities to list, create, update, delete, and import Pokémon, as well as filter, sort, and paginate results ⚡️</p>
     </td>
   </tr>
 </table>
-
-<!-- ## Project Overview
-
-This project is a GraphQL API designed to manage Pokémon and their respective types. It provides functionalities to list, create, update, delete, and import Pokémon, as well as filter, sort, and paginate results. The API is built using NestJS and GraphQL, with Prisma as the ORM for database management. -->
 
 ### Usage of Prisma
 
