@@ -20,7 +20,8 @@
     "resolveJsonModule": true,
     "paths": {
       "@/modules/*": ["src/modules/*"],
-      "@/guards/*": ["src/guards/*"]
+      "@/guards/*": ["src/guards/*"],
+      "@/src/*": ["src/*"]
     }
   }
 }
