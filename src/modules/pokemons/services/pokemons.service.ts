@@ -3,10 +3,10 @@ import { PokemonFields } from 'src/graphql';
 import {
   CreatePokemonInput,
   UpdatePokemonInput,
-} from 'src/modules/pokemons/pokemons.input';
-import { PokeApiService } from 'src/modules/pokemons/services/pokeapi.service';
-import { TypesService } from 'src/modules/pokemons/services/types.service';
-import { PrismaService } from 'src/modules/prisma/prisma.service';
+} from '@/modules/pokemons/pokemons.input';
+import { PokeApiService } from '@/modules/pokemons/services/pokeapi.service';
+import { TypesService } from '@/modules/pokemons/services/types.service';
+import { PrismaService } from '@/modules/prisma/prisma.service';
 
 type SortingParams = {
   field: PokemonFields;

@@ -5,8 +5,8 @@ import { SortingParams, PaginationParams, FilterParams } from 'src/graphql';
 import {
   CreatePokemonInput,
   UpdatePokemonInput,
-} from 'src/modules/pokemons/pokemons.input';
-import { PokemonsService } from 'src/modules/pokemons/services/pokemons.service';
+} from '@/modules/pokemons/pokemons.input';
+import { PokemonsService } from '@/modules/pokemons/services/pokemons.service';
 
 @Resolver('Pokemon')
 export class PokemonsResolver {

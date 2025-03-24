@@ -3,13 +3,13 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
-import { HelloModule } from './modules/hello/hello.module';
-import { PrismaModule } from './modules/prisma/prisma.module';
+import { HelloModule } from '@/modules/hello/hello.module';
+import { PrismaModule } from '@/modules/prisma/prisma.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PokemonsModule } from './modules/pokemons/pokemons.module';
+import { PokemonsModule } from '@/modules/pokemons/pokemons.module';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
-import { GqlThrottlerGuard } from 'src/guards/gql-throttler.guard';
+import { GqlThrottlerGuard } from '@/guards/gql-throttler.guard';
 
 @Module({
   imports: [
