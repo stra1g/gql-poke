@@ -3,8 +3,35 @@ import { pokemons } from './data/pokemon';
 
 async function main() {
   await prisma.pokemon.deleteMany();
-  await prisma.pokemon.createMany({
-    data: pokemons,
+  for (const { name, type } of pokemons) {
+    const { id: typeId } = await fetchType(type);
+
+    await prisma.pokemon.create({
+      data: {
+        name,
+        types: {
+          create: {
+            type: {
+              connect: {
+                id: typeId,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+}
+
+async function fetchType(type: string) {
+  return prisma.types.upsert({
+    where: {
+      name: type.toLowerCase(),
+    },
+    update: {},
+    create: {
+      name: type.toLowerCase(),
+    },
   });
 }
 

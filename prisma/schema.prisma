@@ -33,8 +33,8 @@ model PokemonTypes {
   pokemon_id Int
   type_id Int
 
-  pokemon Pokemon @relation(fields: [pokemon_id], references: [id])
-  type Types @relation(fields: [type_id], references: [id])
+  pokemon Pokemon @relation(fields: [pokemon_id], references: [id], onDelete: Cascade)
+  type Types @relation(fields: [type_id], references: [id], onDelete: Restrict)
 
   @@map("pokemon_types")
 }

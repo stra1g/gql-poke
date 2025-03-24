@@ -13,7 +13,6 @@ const config: Config = {
     prefix: '<rootDir>/',
   }),
   globalSetup: '<rootDir>/test/jest-e2e.setup.ts',
-  globalTeardown: '<rootDir>/test/jest-e2e.teardown.ts',
 };
 
 export default config;

@@ -18,10 +18,11 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage --config ./jest-unit.config.ts",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "NODE_ENV=test jest --config ./test/jest-e2e.config.ts --passWithNoTests"
+    "test:e2e": "NODE_ENV=test DATABASE_URL=\"file:../database/database_prisma_test.sqlite\" jest --config ./test/jest-e2e.config.ts --passWithNoTests"
   },
   "dependencies": {
     "@apollo/server": "^4.7.5",
+    "@faker-js/faker": "^9.6.0",
     "@nestjs/apollo": "^12.0.7",
     "@nestjs/axios": "^4.0.0",
     "@nestjs/cache-manager": "^3.0.0",
